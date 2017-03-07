@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>자료구조 알고리즘은 꼭 필요한 것인가? | SELO&#39;s Autobiography</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Algorithm,Queue,Stack,Graph,datastructure,Array,List,Tree,HashMap" />
+    
+    <meta name="description" content="자료구조 알고리즘은 꼭 필요한 것인가?저는 사파 개발자 입니다. 제가 정의한 사파 개발자라함은 비전공자로서 체계적인 학습을 받지 못한 상태에서 개발에 입문한 개발자를 말합니다. 사실 사파와 정파를 나누다는 것 자체가 제 자신이 부족하다는 증거일 것입니다. 하지만 주니어 개발자 단계에서는 사파와 정파의 차이는 분명 존재합니다. 특히 기반지식들에서는 큰 차이와">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자료구조 알고리즘은 꼭 필요한 것인가?">
+<meta property="og:url" content="https://selo77.github.io/2016/08/11/datastructure-basic/index.html">
+<meta property="og:site_name" content="SELO's Autobiography">
+<meta property="og:description" content="자료구조 알고리즘은 꼭 필요한 것인가?저는 사파 개발자 입니다. 제가 정의한 사파 개발자라함은 비전공자로서 체계적인 학습을 받지 못한 상태에서 개발에 입문한 개발자를 말합니다. 사실 사파와 정파를 나누다는 것 자체가 제 자신이 부족하다는 증거일 것입니다. 하지만 주니어 개발자 단계에서는 사파와 정파의 차이는 분명 존재합니다. 특히 기반지식들에서는 큰 차이와">
+<meta property="og:image" content="https://raw.githubusercontent.com/SELO77/selo77.github.io/master/2016/08/11/datastructure-basic/algorithmwithpicture.JPG">
+<meta property="og:updated_time" content="2016-12-17T08:17:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="자료구조 알고리즘은 꼭 필요한 것인가?">
+<meta name="twitter:description" content="자료구조 알고리즘은 꼭 필요한 것인가?저는 사파 개발자 입니다. 제가 정의한 사파 개발자라함은 비전공자로서 체계적인 학습을 받지 못한 상태에서 개발에 입문한 개발자를 말합니다. 사실 사파와 정파를 나누다는 것 자체가 제 자신이 부족하다는 증거일 것입니다. 하지만 주니어 개발자 단계에서는 사파와 정파의 차이는 분명 존재합니다. 특히 기반지식들에서는 큰 차이와">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/SELO77/selo77.github.io/master/2016/08/11/datastructure-basic/algorithmwithpicture.JPG">
+    
+    <link rel="canonical" href="https://selo77.github.io/2016/08/11/datastructure-basic/"/>
+
+    
+
+    
+        <link rel="icon" href="https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjhkN6puLvNAhWLG5QKHdmrBtsQjRwIBw&url=http%3A%2F%2Fsoulonair0221.tistory.com%2F68&psig=AFQjCNH20EUV_enA2eOkkHOHyx3LhDZy7g&ust=1466678229048432" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-81861651-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">SELO&#39;s LOG</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Base/">Base</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Base/Algorithm/">Algorithm</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Cloud/">Cloud</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Cloud/AWS/">AWS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/">DevEnv</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/ETC/">ETC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/Git/">Git</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Memorandum/">Memorandum</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NoSQL/">NoSQL</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NoSQL/Basic/">Basic</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Language/">Language</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Base/">Base</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Base/Algorithm/">Algorithm</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-datastructure-basic" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        자료구조 알고리즘은 꼭 필요한 것인가?
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/08/11/datastructure-basic/" class="article-date">
+    <time datetime="2016-08-11T07:46:18.000Z" itemprop="datePublished">2016-08-11</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashMap/">HashMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/List/">List</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Queue/">Queue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Stack/">Stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/">Tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/datastructure/">datastructure</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="자료구조-알고리즘은-꼭-필요한-것인가"><a href="#자료구조-알고리즘은-꼭-필요한-것인가" class="headerlink" title="자료구조 알고리즘은 꼭 필요한 것인가?"></a>자료구조 알고리즘은 꼭 필요한 것인가?</h2><p>저는 사파 개발자 입니다. 제가 정의한 사파 개발자라함은 비전공자로서 체계적인 학습을 받지 못한 상태에서 개발에 입문한 개발자를 말합니다. 사실 사파와 정파를 나누다는 것 자체가 제 자신이 부족하다는 증거일 것입니다. 하지만 주니어 개발자 단계에서는 사파와 정파의 차이는 분명 존재합니다. 특히 기반지식들에서는 큰 차이와 출발지점 자체가 다릅니다. 그 중 자료구조와 알고리즘은 무림에 갓 입문한 사파 개발자에게 아주 큰 벽이자 애증의 관계입니다. 그 대표로 제 자신이 존재합니다.</p>
+<p>제 경험을 빗대어 얘기해보자면, 회사에서 신규 서비스를 개발할 때 2명의 API 개발자 중 한명으로 투입된 적이 있었습니다. 지금도 입문자 수준이지만 이 당시에는 알고리즘과 자료구조에 대한 지식이 전무했습니다. 하지만 3개월의 개발기간 동안 문제 없이 개발을 진행했고, 오픈까지 성공적으로 완수 했습니다.</p>
+<p>‘그래서 너가 하고 싶은 말이 뭐냐?’</p>
+<p>음 뭐냐면요… 복잡한 알고리즘이 필요 없는 서비스에서는 자료구조와 알고리즘에 대한 이해가 크게 중요하지 않습니다. 특히 트래픽이 폭팔적으로 많지 않다면 남아도는 서버의 자원이 있다면 더더욱 중요하지 않습니다. 오히려 이 단계에서는 알고리즘과 자료구조에 대한 이해 보다는 코드의 재사용성에 대한 이해와 가독성이 훨씬 중요할 것이라 생각됩니다.</p>
+<p>‘뭐지 이 자식 지는 자료구조와 알고리즘에 대해 포스팅하고 있으면서 왜 자꾸 필요없다는 말을 하는거지?!! 뭐 어쩌라고?!’</p>
+<p><strong>어느 정도 수준의 서비스는 자료구조와 알고리즘이 이해 없이도 꾀 잘 만들수 있다는 믿음은 변함없습니다. 어느 정도로 잘 만들어진 제품을 100점 만점에 80점이라 가정했을 때, 자신이 받은 점수가 80점으로 만족하는 개발자라면 자료구조와 알고리즘을 굳이 공부할 필요가 없다 생각합니다. 80점을 만드는 개발자가 나쁜 것이 아닙니다. 어느 상황에서는 100점 보다 80점 제품이 기업에서 요구하는 수준일 수 있습니다. 60점을 80점으로 만드는 비용과 80점을 100점으로 향상시키는 비용은 비교가 되지 않을 만큼 더 클 것이기 때문입니다. 학창시절 만점을 맞기 위해 투자하는 노력과 80점을 맞기 투자한 노력의 차이와 같은 맥락일 것입니다.</strong></p>
+<p>결국 본인이 80점 이상의 제품을 만들기 원하는 기업에 들어가고 싶다거나 본인 스스로 80점이상의 제품을 만들고 싶다면 자료구조와 알고리즘과 같은 기초지식?들이 필요합니다.</p>
+<p>서론이 엄청 길었네요… 자료구조와 알고리즘과 오랜 싸움을 위해서 어느 정도의 동기부여와 각오가 제 스스로 필요했던 것 같습니다. <strong>사파든 정파든 개발자의 길을 선택했고, 100점 짜리 제품을 만들 수 있는 고수가 되기 위해서 저는 알고리즘과 자료구조를 공부합니다!!</strong> 주저리 끝!! 이제 공부하러 갑시다!!</p>
+<p>잘못된 부분에 대한 지적은 언제든지 감사히 받겠습니다.<br><a href="rochan87@gmail.com">rochan87@gmail.com</a></p>
+<h2 id="Related-Posts"><a href="#Related-Posts" class="headerlink" title="Related Posts"></a>Related Posts</h2><ul>
+<li><p><a href="/2016/07/10/Algorithm-Algorithmic-Problem-Solving-Strategies-02Solving-Problem-Overview/" title="Algorithmic Problem Solving Strategies(알고리즘 문제해결전략) - 02문제 해결 개관">Algorithmic Problem Solving Strategies(알고리즘 문제해결전략) - 02문제 해결 개관</a>,</p>
+</li>
+<li><a href="/2016/07/10/Algorithm-Algorithmic-Problem-Solving-Strategies/" title="Algorithmic Problem Solving Strategies(알고리즘 문제해결전략) - 01문제해결과 프로그래밍 대회">Algorithmic Problem Solving Strategies(알고리즘 문제해결전략) - 01문제해결과 프로그래밍 대회</a>
+</li>
+</ul>
+<p><br></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/leeselo" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/selo77/" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="selo77" data-height="" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/08/20/basic-datastructure/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            자료구조 기본 - 배열, 리스트, 스택, 큐, 트리, 그래프
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2016/08/01/what-is-django/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">The Django Beginning (MVC Vs MTV)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/04/INRODUCTION-TO-ALGORITHMS-0/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2017/03/04/INRODUCTION-TO-ALGORITHMS-0/Clrs3.jpeg)" alt="INTRODUCTION TO ALGORITHMS STUDY 공지" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Base/">Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Base/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2017/03/04/INRODUCTION-TO-ALGORITHMS-0/" class="title">INTRODUCTION TO ALGORITHMS STUDY 공지</a></p>
+                            <p class="item-date"><time datetime="2017-03-04T07:02:34.000Z" itemprop="datePublished">2017-03-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/21/Python-data-model/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/09/02/python-datetime-strftime-example/python-icon.png)" alt="Python data model" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Language/">Language</a></p>
+                            <p class="item-title"><a href="/2016/12/21/Python-data-model/" class="title">Python data model</a></p>
+                            <p class="item-date"><time datetime="2016-12-21T13:04:31.000Z" itemprop="datePublished">2016-12-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/11/Concurrency-in-Python/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/09/02/python-datetime-strftime-example/python-icon.png)" alt="Concurrency in Python" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Language/">Language</a></p>
+                            <p class="item-title"><a href="/2016/12/11/Concurrency-in-Python/" class="title">Concurrency in Python</a></p>
+                            <p class="item-date"><time datetime="2016-12-10T15:14:24.000Z" itemprop="datePublished">2016-12-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/15/django-pyenv-virtualenv-settings/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/08/01/what-is-django/jango.png)" alt="Keybox 개발기1 (pyenv와 virtualenv django 개발환경 셋팅)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Django/">Django</a></p>
+                            <p class="item-title"><a href="/2016/10/15/django-pyenv-virtualenv-settings/" class="title">Keybox 개발기1 (pyenv와 virtualenv django 개발환경 셋팅)</a></p>
+                            <p class="item-date"><time datetime="2016-10-15T06:37:00.000Z" itemprop="datePublished">2016-10-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/12/django-database-migration1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/08/01/what-is-django/jango.png)" alt="Django Custom data Migration" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Language/">Language</a></p>
+                            <p class="item-title"><a href="/2016/10/12/django-database-migration1/" class="title">Django Custom data Migration</a></p>
+                            <p class="item-date"><time datetime="2016-10-11T16:37:59.000Z" itemprop="datePublished">2016-10-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Base/">Base</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Base/Algorithm/">Algorithm</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/AWS/">AWS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/">DevEnv</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/ETC/">ETC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memorandum/">Memorandum</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/Basic/">Basic</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Language/">Language</a><span class="category-list-count">9</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API-Gateway/">API Gateway</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Tree/">Binary Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CD/">CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Concurrency/">Concurrency</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Datastructure/">Datastructure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/">DevOps</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELKR/">ELKR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/">HashMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMBDA/">LAMBDA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MTV/">MTV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Packet/">Packet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProblemSolvingStrategies/">ProblemSolvingStrategies</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-data-model/">Python data model</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Queue/">Queue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regex/">Regex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegularExpression/">RegularExpression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack/">Stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP-Layer/">TCP/IP Layer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asyncio/">asyncio</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datastructure/">datastructure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datetime/">datetime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iamprogrammer/">iamprogrammer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/magic-method/">magic method</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/multiprocess/">multiprocess</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyenv/">pyenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strftime/">strftime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strptime/">strptime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtualenv/">virtualenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yield/">yield</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/개발자모임/">개발자모임</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/나는프로그래머다/">나는프로그래머다</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/나프다/">나프다</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/로그분석/">로그분석</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/API-Gateway/" style="font-size: 10px;">API Gateway</a> <a href="/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Binary-Tree/" style="font-size: 10px;">Binary Tree</a> <a href="/tags/CD/" style="font-size: 10px;">CD</a> <a href="/tags/Concurrency/" style="font-size: 10px;">Concurrency</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Datastructure/" style="font-size: 12.5px;">Datastructure</a> <a href="/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ELKR/" style="font-size: 10px;">ELKR</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Graph/" style="font-size: 12.5px;">Graph</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/LAMBDA/" style="font-size: 10px;">LAMBDA</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MTV/" style="font-size: 10px;">MTV</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Packet/" style="font-size: 10px;">Packet</a> <a href="/tags/ProblemSolvingStrategies/" style="font-size: 12.5px;">ProblemSolvingStrategies</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/Python-data-model/" style="font-size: 10px;">Python data model</a> <a href="/tags/Queue/" style="font-size: 12.5px;">Queue</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Regex/" style="font-size: 10px;">Regex</a> <a href="/tags/RegularExpression/" style="font-size: 10px;">RegularExpression</a> <a href="/tags/Stack/" style="font-size: 12.5px;">Stack</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/TCP-IP-Layer/" style="font-size: 10px;">TCP/IP Layer</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/asyncio/" style="font-size: 15px;">asyncio</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/datastructure/" style="font-size: 10px;">datastructure</a> <a href="/tags/datetime/" style="font-size: 10px;">datetime</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/iamprogrammer/" style="font-size: 10px;">iamprogrammer</a> <a href="/tags/magic-method/" style="font-size: 10px;">magic method</a> <a href="/tags/multiprocess/" style="font-size: 10px;">multiprocess</a> <a href="/tags/pyenv/" style="font-size: 10px;">pyenv</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/strftime/" style="font-size: 10px;">strftime</a> <a href="/tags/strptime/" style="font-size: 10px;">strptime</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/virtualenv/" style="font-size: 10px;">virtualenv</a> <a href="/tags/yield/" style="font-size: 10px;">yield</a> <a href="/tags/개발자모임/" style="font-size: 10px;">개발자모임</a> <a href="/tags/나는프로그래머다/" style="font-size: 10px;">나는프로그래머다</a> <a href="/tags/나프다/" style="font-size: 10px;">나프다</a> <a href="/tags/로그분석/" style="font-size: 10px;">로그분석</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 SELO77</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'selo77';
+    
+    
+    var disqus_url = 'https://selo77.github.io/2016/08/11/datastructure-basic/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

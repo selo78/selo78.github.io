@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>NoSQL 개념 및 종류 | SELO&#39;s Autobiography</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="NoSQL,MongoDB,Redis,Database" />
+    
+    <meta name="description" content="NoSQL 그리고 MongoDB 입문
+NoSQL 개념과 특징
+NoSQL 탄생배경
+NoSQL 분류
+언제 어떤 NoSQL을 사용해야 하는가?
+결론
+Reference
+Related Posts
+
+
+
+
+NoSQL 그리고 MongoDB 입문이번 Side Project의 기술 스택으로 Meteor를 채택 진행하게되었고, 나는 Data Modeling을 맡았다. 그러">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NoSQL 개념 및 종류">
+<meta property="og:url" content="https://selo77.github.io/2016/06/24/nosql-definition-basic/index.html">
+<meta property="og:site_name" content="SELO's Autobiography">
+<meta property="og:description" content="NoSQL 그리고 MongoDB 입문
+NoSQL 개념과 특징
+NoSQL 탄생배경
+NoSQL 분류
+언제 어떤 NoSQL을 사용해야 하는가?
+결론
+Reference
+Related Posts
+
+
+
+
+NoSQL 그리고 MongoDB 입문이번 Side Project의 기술 스택으로 Meteor를 채택 진행하게되었고, 나는 Data Modeling을 맡았다. 그러">
+<meta property="og:image" content="http://cfile26.uf.tistory.com/image/275BE54F57538F8E01103B">
+<meta property="og:updated_time" content="2016-06-24T11:50:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NoSQL 개념 및 종류">
+<meta name="twitter:description" content="NoSQL 그리고 MongoDB 입문
+NoSQL 개념과 특징
+NoSQL 탄생배경
+NoSQL 분류
+언제 어떤 NoSQL을 사용해야 하는가?
+결론
+Reference
+Related Posts
+
+
+
+
+NoSQL 그리고 MongoDB 입문이번 Side Project의 기술 스택으로 Meteor를 채택 진행하게되었고, 나는 Data Modeling을 맡았다. 그러">
+<meta name="twitter:image" content="http://cfile26.uf.tistory.com/image/275BE54F57538F8E01103B">
+    
+    <link rel="canonical" href="https://selo77.github.io/2016/06/24/nosql-definition-basic/"/>
+
+    
+
+    
+        <link rel="icon" href="https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjhkN6puLvNAhWLG5QKHdmrBtsQjRwIBw&url=http%3A%2F%2Fsoulonair0221.tistory.com%2F68&psig=AFQjCNH20EUV_enA2eOkkHOHyx3LhDZy7g&ust=1466678229048432" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-81861651-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">SELO&#39;s LOG</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Base/">Base</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Base/Algorithm/">Algorithm</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Cloud/">Cloud</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Cloud/AWS/">AWS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/">DevEnv</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/ETC/">ETC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/DevEnv/Git/">Git</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Memorandum/">Memorandum</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NoSQL/">NoSQL</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NoSQL/Basic/">Basic</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Language/">Language</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/NoSQL/">NoSQL</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/NoSQL/Basic/">Basic</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-nosql-definition-basic" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        NoSQL 개념 및 종류
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/06/24/nosql-definition-basic/" class="article-date">
+    <time datetime="2016-06-24T03:01:13.000Z" itemprop="datePublished">2016-06-24</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <!-- toc orderedList:0 -->
+<ul>
+<li><a href="#nosql-그리고-mongodb-입문">NoSQL 그리고 MongoDB 입문</a></li>
+<li><a href="#nosql-개념과-특징">NoSQL 개념과 특징</a></li>
+<li><a href="#nosql-탄생배경">NoSQL 탄생배경</a></li>
+<li><a href="#nosql-분류">NoSQL 분류</a></li>
+<li><a href="#언제-어떤-nosql을-사용해야-하는가">언제 어떤 NoSQL을 사용해야 하는가?</a></li>
+<li><a href="#결론">결론</a></li>
+<li><a href="#reference">Reference</a><ul>
+<li><a href="#related-posts">Related Posts</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2 id="NoSQL-그리고-MongoDB-입문"><a href="#NoSQL-그리고-MongoDB-입문" class="headerlink" title="NoSQL 그리고 MongoDB 입문"></a>NoSQL 그리고 MongoDB 입문</h2><p>이번 Side Project의 기술 스택으로 Meteor를 채택 진행하게되었고, 나는 Data Modeling을 맡았다. 그러나 RDBMS만 사용해본 나에게 모든 것은 새롭게 다가 왔고, Mean Stack이나 Meteor Tutorial 정도만 진행한 미천한 실력으로는 어려움을 느꼈다. 그렇게 프로젝트의 성공을 위해 NoSQL 공부를 시작한다.</p>
+<p>이 글의 작정자의 수준은 아래와 같습니다.</p>
+<ul>
+<li>RDBMS 중급. MySQL, ORACLE 사용 경험</li>
+<li>RDBMS data Modeling 초급</li>
+<li>Redis 초급</li>
+<li>NoSQL 초급</li>
+</ul>
+<h2 id="NoSQL-개념과-특징"><a href="#NoSQL-개념과-특징" class="headerlink" title="NoSQL 개념과 특징"></a>NoSQL 개념과 특징</h2><p>NoSQL : Non-Relational Operational Database SQL. 또는 Not only SQL<br>마틴 파울러의 [NoSQL: 빅데이터 세상으로 떠나는 간결한 안내서]에서 NoSQL은 아래의 조건을 만족하는 데이터라 정의했다.</p>
+<ol>
+<li>대용량 웹 서비스를 위하여 만들어진 데이터 저장소</li>
+<li>관계형 데이터 모델을 지양하며 대량의 분산된 데이터를 저장하고 조회하는 데 특화된 저장소</li>
+<li>스키마 없이 사용 가능하거나 느슨한 스키마를 제공하는 저장소</li>
+</ol>
+<p>NoSQL을 잘못 이해하면 스키마가 없는 DataModel 이라 이해할 수 있는데 그렇지 않다는 점을 집고 넘어가자. NoSQL은 각 시스템 마다 고유한 특징을 가진다. 하지만 일반적인 특징을 정의하고 넘어가자면, <strong><em>읽기 작업보다 쓰기 작업이 더 빠르며, 일반적으로 RDBMS에 비하여 쓰기와 읽기 성능이 월등히 빠르다. 그러나 NoSQL은 제대로 알고 쓰지 못하면 성능 저하를 불러오고, 문제를 발생시킨다.</em></strong></p>
+<p>필자가 참여한 프로젝트에서는 검색속도 개선을 위해 Redis를 사용하는데 서버가 죽는 경우 Redis를 갱신시키는데 많은 시간을 소모하여, 복구 작업이 몇배는 더 걸린 경험이 있다.</p>
+<h2 id="NoSQL-탄생배경"><a href="#NoSQL-탄생배경" class="headerlink" title="NoSQL 탄생배경"></a>NoSQL 탄생배경</h2><p>NoSQL이 뭐시고 저시고 공부를 하다 문득 한가지 의문이 생겼다. RDBMS라는 확고한 Database 시스템이 존재하는데!!!! 왜???? 기존의 패러다임과는 너무나도 상반된 NoSQL 시스템이 나타난것인가?!!!</p>
+<p>빅데이터 세상을 맞이함에 있어 구글과 같은 대규모 서비스 업체들은 관계형 데이터베이스 만으로 트래픽을 감당하기 어려워젔고, 이를 해결 하기 위한 결과로 NoSQL을 탄생시켰다. NoSQL은 분산 환경에서 대용량의 데이터를 빠르게 처리하기 위해서 단점을 가진채 개발되었다.</p>
+<h2 id="NoSQL-분류"><a href="#NoSQL-분류" class="headerlink" title="NoSQL 분류"></a>NoSQL 분류</h2><p>NoSQL은 분류 방식에 따라 다르게 나누어진다. 이 글에서는 키에 저장된 값의 데이터 형식에 따라서 분류하겠다. <br></p>
+<ul>
+<li>키-값 모델 <br><blockquote>
+<p>키 값 모델의 가장 큰 특징은 단순한 저장구조를 갖으며, 복잡한 조회 연산을 지원하지 않는다. 저장되는 값을 단지 의미 없는 바이너리 데이터로 처리. 고속 읽기와 쓰기에 최적화된 경우가 많다. <br><br>키-값 모델 NoSQL 예 : Redis, Riak 등 <br><br>키-값 모델의 특징을 고려해 볼때, 단일 연산에 처리할 수 있는 데이터들을 저장하는데 적합하다. 참여한 프로젝트의 경우는 자주검색되는 데이터를 Redis에 set하고, RDBMS 조회전에 Redis를 먼저 바라봄으로서 검색속도를 비약적으로 개선했다. <strong><em>결론, 하나의 서비스 요청에 단일 연산 처리로 대응할수 있는 시스템에 적합하다.</em></strong></p>
+</blockquote>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>문서 모델 <br><blockquote>
+<p><strong><em>문서모델 NoSQL 은 하나의 키에 구조화된 문서를 저장하고 조회한다.</em></strong>  문서모델에서 의미하는 구조화된 문서란 가장 대표적으로 JSON이 있으며, XML과 같이 구조를 갖는 문서를 말한다. 저장된 문서를 컬렉션으로 관리하고, 저장과 동시에 문서 ID에 대한 인덱스를 생성한다. 문서모델의 키는 문서에 대한 ID로 표현됨. 키-값 및 컬럼 모델에 비하여 많은 종류의 기능을 제공하며, <strong><em>RBMS와 유사한 검색조건을 포함한 쿼리를 처리할 수 있다.</em></strong> 이러한 특징 덕분에 문서모델 NoSQL은 많은 인기를 얻고 있다. 대부분의 문서 모델 NoSQL은 B트리 인덱스를 사용하여 2차 인덱스를 생성한다.  그러나 B트리는 크기가 커질수록 새로운 데이터를 입력하거나 삭제할때 성능이 떨어지게 된다. 이러한 이유로 B트리를 사용하는 문서 모델 NoSQL은 읽기와 쓰기 비율을 7:3 이상으로 유지할때 더 좋은 성능을 보인다. <strong><em>결국 사용하는 문서 모델 NoSQL의 특징을 파악하고 사용하자.</em></strong> <br><br>B트리의 특성 떄문에 한 번 작성되면 자주 변하지 않는 정보를 저장하고 조회하는데 적합하며, 로그저장, 타임라인 저장, 채팅로그 기록이나 조회에 적합하다. <br><br>문서 모델 NoSQL 예: 많은 인기를 얻고 있는 MongoDB <br><br>NoSQL의 개념을 빠르게 잡고 MongoDB를 학습, 프로젝트를 진행할 예정이다. 여러분 함께해요~.</p>
+</blockquote>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>그 밖의 모델<blockquote>
+<p>위 두가지 모델 이외에도 컬럼 모델 NoSQL, 그래프 모델 NoSQL 등이 있으나 필자의 능력을 벗어남을 판단했다. 다음 가장 중요한 파트라 생각되는 “언제 어떤 NoSQL을 사용해야 하는가?”로 넘어가겠다.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="언제-어떤-NoSQL을-사용해야-하는가"><a href="#언제-어떤-NoSQL을-사용해야-하는가" class="headerlink" title="언제 어떤 NoSQL을 사용해야 하는가?"></a>언제 어떤 NoSQL을 사용해야 하는가?</h2><p>NoSQL은 RDMS를 단순히 대체하기 위해 나온 시스템이아니다. 그렇기에 정확한 기본지식 없이 사용하면 많은 시행착오와 장애를 맞이하게 될 수 있다<br>그렇다면 NoSQL 시스템을 서비스에 적용하기 위해서는 무엇이 필요할지 정리해 볼 것이다.<br>작성자의 수준에 맞춰 이해가 어려운 부분은 제외 하였으니 더 많은 정보를 원한다면 아래 Reference를 참고하기 바란다.</p>
+<p>대량의 단순 정보를 빠르게 저장하고 조회할 때, 관계형 데이터베이스가 처리하지 못하는 대량의 데이터를 입력할때 스키마가 고정되지 않은 데이터를 저장하고 조회할 떄 등이 이에 해당된다. 하지만 위와 같은 상황에서 무턱대고 아무 NoSQL을 적용한다면 큰 낭패를 보게 될 것이다. <strong><em>결국 시스템의 상황을 고려하여, 서비스 특징에 맞는 적합한 NoSQL 저장소를 택하여야 한다.</em></strong>  NoSQL의 선택에 있어 고려해야 할 사항으로는 다음과 같다.</p>
+<ul>
+<li>일관성 모델 : 서비스에서 저장하려는 데이터가 어느 정도의 일관성이 필요한지 확인하여야한다.</li>
+<li>데이터 모델 : 저장하려는 데이터가 키-값 모델과 같은 간단한 데이터 모델로 처리가 가능한지 또는 문서 모델과 같이 중첩된 구조를 지원해야 하는지 판단해야 한다.</li>
+<li>읽기 쓰기 성능 : 앞에서 말했듯이 읽기와 쓰기 비율에 따라서 적합한 NoSQL이 다르다. 빠른 응답시간이 필요하다면 인메모리 NoSQL이 적합하며, 상대적으로 읽기 비율이 높다면 문서-모델 NoSQL이 후보가 될 수 있다. (듣던 중 반가운 소리!! 필자가 개발하는 서비스의 특성상 읽기의 비율이 높다.)</li>
+<li>원자성 지원 : 선택한 NoSQL의 트랜잭션 지원 여부, 단일 연산에 대한 연자성 지원 여부 등도 학인해야 한다. (이 부분은 확인 필요)</li>
+</ul>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p><strong><em>장점만 갖는 시스템은 존재하지 않는다. NoSQL의 환상에 빠지지 말고, 서비스가 NoSQL 적용이 적합한지, 적합하다면 어떤 NoSQL 이 알맞는지 판단하여야 할 것이다.</em></strong></p>
+<p>위 내용은 아래 Reference의 내용을 토대로 작성되었습니다. 특히, 이번 포스팅은 제가 즐겨 듣는 팟케스트 꿈과 희망의 나는프로그래머다 공식 후훤사 한빛미디어의 책 “정경석 - 이것이 Redis다” 를 주로 참고하였습니다.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://bcho.tistory.com/666" target="_blank" rel="external">http://bcho.tistory.com/666</a><br><a href="http://bcho.tistory.com/665" target="_blank" rel="external">http://bcho.tistory.com/665</a><br><a href="https://velopert.com/436" target="_blank" rel="external">https://velopert.com/436</a><br>책 : 정경석 - 이것이 Redis 다</p>
+<h3 id="Related-Posts"><a href="#Related-Posts" class="headerlink" title="Related Posts"></a>Related Posts</h3>
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/leeselo" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/selo77/" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="selo77" data-height="" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/06/24/git-definition-usefulsite/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Git 개념 및 유용한 사이트
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2016/06/23/Python-definition/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Python - Python?</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/04/INRODUCTION-TO-ALGORITHMS-0/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2017/03/04/INRODUCTION-TO-ALGORITHMS-0/Clrs3.jpeg)" alt="INTRODUCTION TO ALGORITHMS STUDY 공지" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Base/">Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Base/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2017/03/04/INRODUCTION-TO-ALGORITHMS-0/" class="title">INTRODUCTION TO ALGORITHMS STUDY 공지</a></p>
+                            <p class="item-date"><time datetime="2017-03-04T07:02:34.000Z" itemprop="datePublished">2017-03-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/21/Python-data-model/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/09/02/python-datetime-strftime-example/python-icon.png)" alt="Python data model" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Language/">Language</a></p>
+                            <p class="item-title"><a href="/2016/12/21/Python-data-model/" class="title">Python data model</a></p>
+                            <p class="item-date"><time datetime="2016-12-21T13:04:31.000Z" itemprop="datePublished">2016-12-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/11/Concurrency-in-Python/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/09/02/python-datetime-strftime-example/python-icon.png)" alt="Concurrency in Python" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Language/">Language</a></p>
+                            <p class="item-title"><a href="/2016/12/11/Concurrency-in-Python/" class="title">Concurrency in Python</a></p>
+                            <p class="item-date"><time datetime="2016-12-10T15:14:24.000Z" itemprop="datePublished">2016-12-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/15/django-pyenv-virtualenv-settings/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/08/01/what-is-django/jango.png)" alt="Keybox 개발기1 (pyenv와 virtualenv django 개발환경 셋팅)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Django/">Django</a></p>
+                            <p class="item-title"><a href="/2016/10/15/django-pyenv-virtualenv-settings/" class="title">Keybox 개발기1 (pyenv와 virtualenv django 개발환경 셋팅)</a></p>
+                            <p class="item-date"><time datetime="2016-10-15T06:37:00.000Z" itemprop="datePublished">2016-10-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/12/django-database-migration1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://selo77.github.io/2016/08/01/what-is-django/jango.png)" alt="Django Custom data Migration" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Language/">Language</a></p>
+                            <p class="item-title"><a href="/2016/10/12/django-database-migration1/" class="title">Django Custom data Migration</a></p>
+                            <p class="item-date"><time datetime="2016-10-11T16:37:59.000Z" itemprop="datePublished">2016-10-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Base/">Base</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Base/Algorithm/">Algorithm</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/AWS/">AWS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/">DevEnv</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/ETC/">ETC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevEnv/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memorandum/">Memorandum</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/Basic/">Basic</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Language/">Language</a><span class="category-list-count">9</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API-Gateway/">API Gateway</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Tree/">Binary Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CD/">CD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Concurrency/">Concurrency</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Datastructure/">Datastructure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/">DevOps</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELKR/">ELKR</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/">HashMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMBDA/">LAMBDA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MTV/">MTV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Packet/">Packet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProblemSolvingStrategies/">ProblemSolvingStrategies</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-data-model/">Python data model</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Queue/">Queue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regex/">Regex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegularExpression/">RegularExpression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack/">Stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP-Layer/">TCP/IP Layer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asyncio/">asyncio</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coroutine/">coroutine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datastructure/">datastructure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datetime/">datetime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iamprogrammer/">iamprogrammer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/magic-method/">magic method</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/multiprocess/">multiprocess</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyenv/">pyenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strftime/">strftime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strptime/">strptime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtualenv/">virtualenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yield/">yield</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/개발자모임/">개발자모임</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/나는프로그래머다/">나는프로그래머다</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/나프다/">나프다</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/로그분석/">로그분석</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/API-Gateway/" style="font-size: 10px;">API Gateway</a> <a href="/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Binary-Tree/" style="font-size: 10px;">Binary Tree</a> <a href="/tags/CD/" style="font-size: 10px;">CD</a> <a href="/tags/Concurrency/" style="font-size: 10px;">Concurrency</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Datastructure/" style="font-size: 12.5px;">Datastructure</a> <a href="/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ELKR/" style="font-size: 10px;">ELKR</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Graph/" style="font-size: 12.5px;">Graph</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/LAMBDA/" style="font-size: 10px;">LAMBDA</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/MTV/" style="font-size: 10px;">MTV</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Packet/" style="font-size: 10px;">Packet</a> <a href="/tags/ProblemSolvingStrategies/" style="font-size: 12.5px;">ProblemSolvingStrategies</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/Python-data-model/" style="font-size: 10px;">Python data model</a> <a href="/tags/Queue/" style="font-size: 12.5px;">Queue</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Regex/" style="font-size: 10px;">Regex</a> <a href="/tags/RegularExpression/" style="font-size: 10px;">RegularExpression</a> <a href="/tags/Stack/" style="font-size: 12.5px;">Stack</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/TCP-IP-Layer/" style="font-size: 10px;">TCP/IP Layer</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/asyncio/" style="font-size: 15px;">asyncio</a> <a href="/tags/coroutine/" style="font-size: 10px;">coroutine</a> <a href="/tags/datastructure/" style="font-size: 10px;">datastructure</a> <a href="/tags/datetime/" style="font-size: 10px;">datetime</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/iamprogrammer/" style="font-size: 10px;">iamprogrammer</a> <a href="/tags/magic-method/" style="font-size: 10px;">magic method</a> <a href="/tags/multiprocess/" style="font-size: 10px;">multiprocess</a> <a href="/tags/pyenv/" style="font-size: 10px;">pyenv</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/strftime/" style="font-size: 10px;">strftime</a> <a href="/tags/strptime/" style="font-size: 10px;">strptime</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/virtualenv/" style="font-size: 10px;">virtualenv</a> <a href="/tags/yield/" style="font-size: 10px;">yield</a> <a href="/tags/개발자모임/" style="font-size: 10px;">개발자모임</a> <a href="/tags/나는프로그래머다/" style="font-size: 10px;">나는프로그래머다</a> <a href="/tags/나프다/" style="font-size: 10px;">나프다</a> <a href="/tags/로그분석/" style="font-size: 10px;">로그분석</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 SELO77</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'selo77';
+    
+    
+    var disqus_url = 'https://selo77.github.io/2016/06/24/nosql-definition-basic/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
