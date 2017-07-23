@@ -1,0 +1,378 @@
+@charset "utf-8";
+
+/*============================== 
+	- Template Name: LUV - Responsive One Page HTML Wedding Template
+	- Author: DoubleEight
+	- Version: 1.0
+	- Website: www.dethemes.com
+================================= */	
+
+/*---------------------- 
+	Stylesheet Guide
+------------------------
+00. PRELOADER
+01. GENERAL
+	01-1 Common
+	01-2 Title & Intro
+	01-3 Photo Divider
+	01-4 Button
+	01-5 Photo Item
+		01-5-1 Photo Item Caption
+02. HOME
+	02-1 Logo
+	02-2 Slider
+	02-3 Menu
+	02-4 Menu Color
+03. COUPLE
+	03-1 His/Her Profile
+	03-2 Popup Content
+04. THE DAY	
+	04-1 Location, Date, Accomodation
+	04-2 Location Map
+05. BRIDESMAID & GROOMSMEN
+06. GALLERY
+	06-1 Gallery2 - masonry col
+07. GIFT REGISTRY
+08. BLOG
+09. RSVP
+10. FOOTER
+11. MEDIA SCREEN
+12. STYLE SWITCHER
+
+
+/*========================*/
+/* 00. PRELOADER		  */
+/*========================*/
+#loader_heart{
+	color:#b06c8b;
+}
+
+#hisname{
+	color:#FFF;
+}
+
+#hername{
+	color:#b06c8b;
+}
+	
+/*========================*/
+/* 01. GENERAL 			  */
+/*========================*/
+
+/* 01-1 Common */
+/* ----------------------- */
+body {
+	color:#747474;
+}
+
+section {
+	background-color:#e8e8e8;
+}
+
+h1, h2, h3, h4, h5, h6{
+	color:#444444;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a{
+	color:#444444;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover{
+	color:#b06c8b;
+}
+
+p a{
+	color:#b06c8b;
+}
+
+p a:hover{
+	color:#444444;
+}
+
+
+/* 01-2 Title & Intro */
+/* ----------------------- */
+.sub_title{
+	color:#8b8a8a;
+}
+
+.intro_heart{
+	color:#b06c8b;
+}
+
+
+/* 01-3 Photo Divider */
+/* ----------------------- */
+
+
+
+
+/* 01-4 Button */
+/* ----------------------- */
+.btn-default{
+	background-color:#b06c8b !important;
+	color:#fff !important;
+	border-color:#bd4646 !important;
+}
+
+.btn-default:hover{
+	background-color:#000000 !important;
+	border-color:#000000 !important;
+}
+
+/* 01-5 Photo Item */
+/* ----------------------- */
+.photo_item_overlay {
+	background-color: rgba(176, 108, 139, 0.4);
+}
+
+.icon_background{
+	background: rgba(0, 0, 0, 0);
+}
+
+.icon_button{
+	color:#fff; 
+}
+
+.photo_item_overlay a:hover .icon_background{
+	background: rgba(0, 0, 0, 0.7);
+}
+
+/* 01-5-1 Photo Item Caption */
+/* ----------------------- */
+.photo_caption
+{
+	color:#ffffff;
+}
+
+
+
+/* =================================================== */
+/* 02. HOME		 		                               */
+/* =================================================== */
+
+/* 02-1 Logo */
+/* ----------------------- */
+#logo {
+	background-color:#000000;
+	color:#ffffff;
+}
+
+/* 02-2 Slider */
+/* ----------------------- */
+#slide_text{
+	color:#ffffff;
+}
+
+#slide_text3{
+	border-bottom:solid 3px #ffffff;
+	border-top:solid 3px #ffffff
+}
+
+.heart_row {
+	color:#b06c8b;
+}
+
+/* 02-3 Menu */
+/* ----------------------- */
+
+
+/* 02-4 Menu Color */
+/* ----------------------- */
+/* navbar */
+.navbar-default {
+    background-color: #b06c8b;
+    border-color: #E7E7E7;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* link */
+.navbar-default .navbar-nav  {
+	background-color: #b06c8b;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #000	;
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #000;
+    background-color: #b06c8b;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #000;
+	border-color: #000;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
+
+/*========================*/
+/* 03. COUPLE        	  */
+/*========================*/
+
+/* 03-1 His/Her Profile */
+/* ----------------------- */
+.profile{
+	background-color:#fff;
+}
+
+.subname {
+	color:#8b8a8a
+}
+
+
+/* 03-2 Popup Content */
+/* ----------------------- */
+.popup_content{
+	background-color:#FFF; 
+}
+
+/*========================*/
+/* 04. THE DAY 	  */
+/*========================*/
+
+/* 04-1 Location, Date, Accomodation */
+/* ----------------------- */
+.box{
+	background-color:#ffffff;
+}
+
+.box_icon{
+	background-color:#b06c8b; 
+	color:#ffffff; 
+}
+
+.box_title{
+	color:#444444
+}
+
+
+/* 04-2 Location Map */
+/* ----------------------- */
+
+/*==============================*/
+/* 05. BRIDESMAID & GROOMSMEN   */
+/*==============================*/
+
+.name_wrapper{
+	background-color:#FFF; 
+}
+
+/*========================*/
+/* 06. GALLERY			  */
+/*========================*/
+
+
+/* 06-1 Gallery2 - masonry col */
+/* ----------------------- */
+
+
+
+/*========================*/
+/* 07. GIFT REGISTRY	  */
+/*========================*/
+
+
+
+/*========================*/
+/* 08. BLOG				  */
+/*========================*/
+.blog_wrapper{
+	background-color:#fff; 
+}
+
+.blog_info a{
+	color:#b06c8b;
+}
+
+.blog_info a:hover{
+	color:#444444;
+}
+
+/*========================*/
+/* 09. RSVP				  */
+/*========================*/
+option{
+	color:#747474;
+}
+
+
+#result .bg-danger, #result .bg-success{
+	color:#ffffff;
+}
+
+#result .bg-danger{
+	background-color:#C33
+}
+
+#result .bg-success{
+	background-color:#b06c8b
+}
+
+/*========================*/
+/* 10. FOOTER			  */
+/*========================*/
+#footer_text{
+	background-color:#000; 
+}
+
+
+/* =======================*/
+/* 11. MEDIA SCREEN 	  */
+/* =======================*/
+
+
+
+/* =======================*/
+/* 12. STYLE SWITCHER     */
+/* =======================*/
+
+
