@@ -97,7 +97,10 @@
 			slides  :  	
 			[ 
 				// {	image : 'images/slider/0.jpg' } ,
-				{	image : 'images/slider/1.jpg' }
+				{	image : 'images/top/1.jpg' },
+				{	image : 'images/top/2.jpg' },
+				{	image : 'images/top/3.jpg' },
+				{	image : 'images/top/4.jpg' }
 				// {	image : 'images/slider/2.jpg' }
 				// {	image : 'http://placehold.it/1600x1063' }
 			]
