@@ -23,7 +23,7 @@
         		barHeight: 6,
         		completeAnimation: "grow",
 				overlayId: "preloader",
-				minimumTime: 5000,
+				minimumTime: 1500,
 				onComplete: function()
 				{
 					
